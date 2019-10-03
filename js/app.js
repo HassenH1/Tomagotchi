@@ -63,28 +63,44 @@ const game = {
       this.hassen.getSomeFood()
       this.hassen.gettingBored()
 
-      if (this.hassen.hunger >= 20) {
-        console.log("died from Hungre")
-        $("#litte").css("animation", "0")
-        $("#little").css("transform", "rotate(0deg)")
+      if (this.hassen.hunger >= 100) {
+        $("#little").attr('src', 'img/dead.png')
+        $("#little").css("animation", "first 0s infinite")
+        $(".btn button").attr("disabled", true)
+
+        //$("#litte").css("animation", "0")
+        //$("#little").css("transform", "rotate(0deg)")
+        alert("Got too Hungry")
+        clearInterval(gameStarter)
+      } else if (this.hassen.sleep >= 100) {
+        $("#little").attr('src', 'img/dead.png')
+        $("#little").css("animation", "first 0s infinite")
+
+        $(".btn button").attr("disabled", true)
+
+        alert("died from lack of sleep")
+        
+        //$("#litte").css("animation", "0")
+        //$("#little").css("transform", "rotate(0deg)")
+        //$("#little").css("transform", "rotate(0deg)")
+        // clearInterval(lightOff)
+        clearInterval(gameStarter)
+      } else if (this.hassen.boredom >= 100) {
+        $("#little").attr('src', 'img/dead.png')
+        $("#little").css("animation", "first 0s infinite")
+        $(".btn button").attr("disabled", true)
+        alert("Died from Boredom")
+        
+        //$("#litte").css("animation", "0")
+        //$("#little").css("transform", "rotate(0deg)")
+        //$("#little").css("transform", "rotate(0deg)")
 
         clearInterval(gameStarter)
-      } else if (this.hassen.sleep >= 20 || li ) {
-          console.log("died from lack of sleep")
-          $("#litte").css("animation", "0")
-        $("#little").css("transform", "rotate(0deg)")
-          //$("#little").css("transform", "rotate(0deg)")
-          // clearInterval(lightOff)
-          clearInterval(gameStarter)
-      } else if (this.hassen.boredom >= 20) {
-          console.log("Died from Boredom")
-          $("#litte").css("animation", "0")
-        $("#little").css("transform", "rotate(0deg)")
-          //$("#little").css("transform", "rotate(0deg)")
-
-          clearInterval(gameStarter)
+      }else if (li){
+        
+        clearInterval(gameStarter)
       }
-    }, 1000)
+    }, 3000)
 
     $("#feed").on('click', () => {
       this.hassen.feed()
@@ -94,9 +110,12 @@ const game = {
       // let feeding = setInterval(() => {
 
       // }, 3000)
-      
-
     })
+
+    $("#extra").on("click", () => {
+      console.log("extra Extra")
+    })
+
     $("#play").on('click', () => {
       this.hassen.bored()
       imagePlay()
@@ -112,20 +131,20 @@ $("#lights").on("click", (e) => {
       // hassen.sleep--
       $("#sleepProgress").attr("value", `${game.hassen.sleep--}`)
       $("#sleep").text(`Sleep: ${game.hassen.sleep}`)
-      if(game.hassen.sleep === 0){
+      if (game.hassen.sleep === 0) {
         clearInterval(lightOff)
         //li = false;
         li = false
         $(".container").css("background-image", "linear-gradient(to top, rgb(248, 247, 184), rgb(240,240,240))");
         $(".levels").css("color", "black")
         game.start()
-      } 
+      }
     }, 700)
-      $(".container").css("background-image", "linear-gradient(to top, rgb(0, 0, 0), rgb(0,0,0))");
-      $(".levels").css("color", "white")
-      // $('.container').css('background-color', 'black');
-      console.log(e.target)
-      li = true;
+    $(".container").css("background-image", "linear-gradient(to top, rgb(0, 0, 0), rgb(0,0,0))");
+    $(".levels").css("color", "white")
+    // $('.container').css('background-color', 'black');
+    console.log(e.target)
+    li = true;
   } else {
     li = false
     $(".container").css("background-image", "linear-gradient(to top, rgb(248, 247, 184), rgb(240,240,240))");
@@ -135,7 +154,7 @@ $("#lights").on("click", (e) => {
   }
 })
 
-function feedingTime () {
+function feedingTime() {
   $('.container').prepend('<img id="food" src="img/food.png">')
   setTimeout(() => {
     $("#food").remove()
@@ -143,7 +162,7 @@ function feedingTime () {
   }, 3000)
 }
 
-function imagePlay(){
+function imagePlay() {
   $("#little").attr('src', 'img/play.png')
   setTimeout(() => {
     $("#little").attr("src", "img/play2.png")

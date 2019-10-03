@@ -57,6 +57,7 @@ body {
 
 }
 
+
 #little {
   position: absolute;
   top: 60px;
@@ -70,7 +71,6 @@ body {
 @keyframes first {
   /* #little {animation-timing-function: ease-in} */
   0% {transform: translateY(1em);}
-  
 }
 
 #grass {
