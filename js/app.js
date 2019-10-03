@@ -14,7 +14,7 @@ class Tom {
     //console.log(`${this.name}  <---sleep`)
   }
   play() {
-    $("#sleepProgress").attr("value", `${this.sleep--}`)
+    $("#sleepProgress").attr("value", `${this.boredom--}`)
 
   }
   bored() {
@@ -34,7 +34,7 @@ class Tom {
   getSomeSleep() {
     this.sleep += Math.floor(Math.random() * 3)
     $("#sleepProgress").attr("value", `${this.sleep++}`)
-    $("#sleep").text(`Sleep: ${this.sleep}`)
+    $("#sleep").text(`Sleepiness:${this.sleep}`)
     //console.log(`${this.name}  <---sleep`)
   }
   // check(){
@@ -51,60 +51,106 @@ class Tom {
 }
 
 const game = {
+  hassen: new Tom(name),
   start() {
-    const hassen = new Tom(name)
-    console.log(hassen.name)
-    $("#name").text(hassen.name)
+    // const hassen = new Tom(name)
+    console.log(this.hassen.name)
+    $("#name").text(this.hassen.name)
     //hassen.getSomeFood()
     //hassen.feed()
     const gameStarter = setInterval(() => {
-      //hassen.getSomeSleep()
-      //hassen.getSomeFood()
-      //hassen.gettingBored()
+      this.hassen.getSomeSleep()
+      this.hassen.getSomeFood()
+      this.hassen.gettingBored()
 
-      if (hassen.hunger >= 20) {
+      if (this.hassen.hunger >= 20) {
         console.log("died from Hungre")
+        $("#litte").css("animation", "0")
         $("#little").css("transform", "rotate(0deg)")
 
         clearInterval(gameStarter)
-      } else if (hassen.sleep >= 20) {
+      } else if (this.hassen.sleep >= 20 || li ) {
           console.log("died from lack of sleep")
-          $("#little").css("transform", "rotate(0deg)")
-
+          $("#litte").css("animation", "0")
+        $("#little").css("transform", "rotate(0deg)")
+          //$("#little").css("transform", "rotate(0deg)")
+          // clearInterval(lightOff)
           clearInterval(gameStarter)
-      } else if (hassen.boredom >= 20) {
+      } else if (this.hassen.boredom >= 20) {
           console.log("Died from Boredom")
-          $("#little").css("transform", "rotate(0deg)")
+          $("#litte").css("animation", "0")
+        $("#little").css("transform", "rotate(0deg)")
+          //$("#little").css("transform", "rotate(0deg)")
 
           clearInterval(gameStarter)
       }
     }, 1000)
 
     $("#feed").on('click', () => {
-      hassen.feed()
+      this.hassen.feed()
+      $("#feed").attr("disabled", true)
+      feedingTime()
+      // $('.container').prepend('<img id="food" src="img/food.png">')
+      // let feeding = setInterval(() => {
+
+      // }, 3000)
+      
+
     })
     $("#play").on('click', () => {
-      hassen.bored()
+      this.hassen.bored()
+      imagePlay()
     })
+  }
+}
 
-
-    let li = false
-    $("#lights").on("click", (e) => {
-      if (li !== true) {
-        
-          $(".container").css("background-image", "linear-gradient(to top, rgb(0, 0, 0), rgb(0,0,0))");
-          $(".levels").css("color", "white")
-          // $('.container').css('background-color', 'black');
-          console.log(e.target)
-          li = true;
-      } else {
+let lightOff
+let li = false
+$("#lights").on("click", (e) => {
+  if (!li) {
+    lightOff = setInterval(() => {
+      // hassen.sleep--
+      $("#sleepProgress").attr("value", `${game.hassen.sleep--}`)
+      $("#sleep").text(`Sleep: ${game.hassen.sleep}`)
+      if(game.hassen.sleep === 0){
+        clearInterval(lightOff)
+        //li = false;
         li = false
         $(".container").css("background-image", "linear-gradient(to top, rgb(248, 247, 184), rgb(240,240,240))");
         $(".levels").css("color", "black")
+        game.start()
+      } 
+    }, 700)
+      $(".container").css("background-image", "linear-gradient(to top, rgb(0, 0, 0), rgb(0,0,0))");
+      $(".levels").css("color", "white")
+      // $('.container').css('background-color', 'black');
+      console.log(e.target)
+      li = true;
+  } else {
+    li = false
+    $(".container").css("background-image", "linear-gradient(to top, rgb(248, 247, 184), rgb(240,240,240))");
+    $(".levels").css("color", "black")
+    game.start()
 
-      }
-    })
   }
+})
+
+function feedingTime () {
+  $('.container').prepend('<img id="food" src="img/food.png">')
+  setTimeout(() => {
+    $("#food").remove()
+    $("#feed").attr("disabled", false)
+  }, 3000)
+}
+
+function imagePlay(){
+  $("#little").attr('src', 'img/play.png')
+  setTimeout(() => {
+    $("#little").attr("src", "img/play2.png")
+  }, 2000)
+  setTimeout(() => {
+    $('#little').attr('src', 'img/chao.png')
+  }, 3000)
 }
 
 game.start()

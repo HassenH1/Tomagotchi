@@ -45,9 +45,11 @@ body {
   position: absolute;
   left: 5px;
   text-align: left;
-  font-size: 15px;
+  font-size: 13px;
   border-radius: 20px 0px 20px 0px;
   padding-left: 10px;
+  margin-left:20px;
+  padding-top: 15px;
   border-style: inset;
   border-width: 4px;
   border-color: black;
@@ -67,8 +69,7 @@ body {
 
 @keyframes first {
   /* #little {animation-timing-function: ease-in} */
-  10% {transform: translateY(1em);}
-  /* 20% {transform: translateY(0em);} */
+  0% {transform: translateY(1em);}
   
 }
 
@@ -161,3 +162,24 @@ h1 {
   position: absolute;
   top: 200px;
 }
+
+#food {
+  position: absolute;
+  z-index: 1;
+  height: 50px;
+  width: 50px;
+  left: 110px;
+  top: 200px;
+  animation-name: second;
+  animation-duration: 4s;
+  animation-direction: normal;
+}
+
+@keyframes second {
+  0% {left:110px; top:200px;}
+  25% {left:125px; top:150px;}
+  /*50% {left:250px; top:100px;}
+  75% {left:400px; top:95px;} */
+  100% {left:480px; top:90px;}
+  /* 50% {left:250px; top:100px;} */
+} 
