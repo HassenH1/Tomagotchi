@@ -1,0 +1,163 @@
+* {
+  padding: 0;
+  margin: 0;
+  /* box-sizing: border-box; */
+}
+
+html {
+  font-size: 62.5%;
+  /* text-align: center; */
+}
+
+body {
+  height: 100vh;
+  /* width: 128em; */
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Press Start 2P', cursive;
+  background-color: antiquewhite;
+
+}
+
+.container {
+  height: 35em;
+  width: 75em;
+  border: 1px solid black;
+  text-align: center; 
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background-image: linear-gradient(to top,rgb(248, 247, 184), rgb(240, 240, 240));
+  margin-bottom: 10px;
+}
+
+.levels {
+  margin: 20px 0px 0px 30px;
+  /* justify-content: left; */
+  /* margin-left: auto; */
+  height: 120px;
+  width: 210px;
+  /* border: 2px solid black; */
+  /* top: 1px; */
+  position: absolute;
+  left: 5px;
+  text-align: left;
+  font-size: 15px;
+  border-radius: 20px 0px 20px 0px;
+  padding-left: 10px;
+  border-style: inset;
+  border-width: 4px;
+  border-color: black;
+  box-shadow: 5px 10px 8px #888888;
+
+}
+
+#little {
+  position: absolute;
+  top: 60px;
+  right: 190px;
+  height: 100px;
+  width: 80px;
+  animation: first 1s infinite;
+  /* transform: rotate(0deg); */
+}
+
+@keyframes first {
+  /* #little {animation-timing-function: ease-in} */
+  10% {transform: translateY(1em);}
+  /* 20% {transform: translateY(0em);} */
+  
+}
+
+#grass {
+  position: absolute;
+  z-index: 100px;
+  height: 200px;
+  width: 280px;
+  right: 90px;
+  top: 30px;
+}
+
+#grass2 {
+  position: absolute;
+  height: 200px;
+  width: 280px;
+  left: 20px;
+  top: 120px;
+}
+
+button {
+  width: 97px;
+  height: 30px;
+  background-color: white;
+  border: none;
+  font-size: 15px;
+  /* border: none; */
+  outline:none;
+  font-family: 'Press Start 2P', cursive;
+
+}
+
+button:hover {
+  text-decoration: underline;
+  
+}
+
+img {
+  position: absolute;
+  right: 150px;
+  top: 30px;
+}
+
+.btn {
+  border-style: inset;
+  border-width: 4px;
+  border-color: purple;
+   width: 180px;
+  /* height: 50px; */
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  padding: 10px 50px;
+  border-radius: 5px;
+  background-color: white;
+  /* box-sizing: border-box; */
+}
+
+p{
+  /* border: 2px solid black; */
+  box-sizing: border-box;
+
+  border-style: inset;
+  border-width: 4px;
+  border-color: purple;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 425px;
+  height: 90px;
+  font-size: 30px;
+  text-align: left;
+  /* padding-right: 100px; */
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: white;
+  font-size: 20px;
+  padding-top: 20px;
+  /* margin-top: 12px; */
+}
+
+.black {
+  background-color: red;
+}
+
+h1 {
+  position: absolute;
+  top: 200px;
+}
